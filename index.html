@@ -309,6 +309,42 @@ h1.mega{ font-family:'Cormorant Garamond',serif; font-weight:300; font-size:var(
 .pillar h4{ font-size:var(--fs-h4); font-weight:500; color:var(--ivory); margin-bottom:8px; }
 .pillar p{ font-size:var(--fs-sm); line-height:1.65; color:var(--ivory-g); }
 
+/* ── Differentiation cards ── */
+.diff-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--seam); border:1px solid var(--seam); margin-top:var(--sp-4); }
+.diff-card{ background:var(--obs2); padding:30px 26px; display:flex; flex-direction:column; gap:14px; transition:background .3s var(--ease); }
+.diff-card:hover{ background:var(--obs3); }
+.diff-card.feat{ background:linear-gradient(180deg, rgba(201,169,110,.07), var(--obs2)); border-top:2px solid var(--champ); }
+.diff-tag{ font-size:var(--fs-xs); letter-spacing:.12em; text-transform:uppercase; font-weight:600; color:var(--ivory-g); padding-bottom:12px; border-bottom:1px solid var(--seam); }
+.diff-tag.champ{ color:var(--champ); }
+.diff-can{ font-size:var(--fs-sm); line-height:1.6; color:var(--ivory); }
+.diff-cant{ font-size:var(--fs-sm); line-height:1.6; color:var(--ivory-g); }
+.diff-cant.champ-line{ color:var(--champ-p); font-style:italic; }
+
+/* ── The Difference page: loop + alt section ── */
+.section.alt{ background:var(--obs2); }
+.loop-row{ display:flex; align-items:stretch; gap:18px; margin-top:var(--sp-4); flex-wrap:wrap; }
+.loop-step{ flex:1; min-width:200px; background:var(--obs2); border:1px solid var(--seam); border-radius:14px; padding:28px 24px; transition:transform .3s var(--ease), border-color .3s var(--ease); }
+.loop-step:hover{ transform:translateY(-4px); border-color:var(--champ-b2); }
+.loop-num{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:38px; color:var(--champ-d); display:block; margin-bottom:10px; }
+.loop-step h4{ font-size:var(--fs-h4); font-weight:500; color:var(--ivory); margin-bottom:8px; }
+.loop-step p{ font-size:var(--fs-sm); line-height:1.6; color:var(--ivory-g); }
+.loop-arrow{ align-self:center; color:var(--champ-d); font-size:30px; flex:0 0 auto; }
+.section.alt .loop-step{ background:var(--obs); }
+
+/* ── One-tap chain (Difference page) ── */
+.tap-chain{ list-style:none; margin:var(--sp-4) 0 0; padding:0; max-width:640px; position:relative; }
+.tap-step{ display:flex; gap:20px; align-items:flex-start; padding:0 0 26px 0; position:relative; }
+.tap-step::before{ content:""; position:absolute; left:23px; top:46px; bottom:-4px; width:2px; background:linear-gradient(var(--champ-b2), transparent); }
+.tap-step:last-child::before{ display:none; }
+.tap-num, .tap-ico{ flex:0 0 auto; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--champ); background:var(--obs2); border:1px solid var(--champ-b2); position:relative; z-index:1; }
+.tap-ico{ background:var(--champ); border-color:var(--champ); }
+.tap-ico svg{ width:24px; height:24px; stroke:var(--obs); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+.tap-step h4{ font-size:var(--fs-h4); font-weight:500; color:var(--ivory); margin-bottom:5px; }
+.tap-step p{ font-size:var(--fs-sm); line-height:1.6; color:var(--ivory-g); }
+.tap-step.alt-route .tap-num{ color:var(--forest-p); border-color:var(--forest); background:rgba(42,74,53,.18); }
+.tap-step.alt-route h4{ color:var(--forest-p); }
+.tap-kicker{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:var(--fs-h3); color:var(--champ); margin-top:8px; padding-left:68px; }
+
 /* ── Pull quote ── */
 .pullquote{ padding:var(--sp-6) var(--pad-x); border-bottom:1px solid var(--seam); text-align:center; }
 .pullquote blockquote{
@@ -805,6 +841,7 @@ textarea.wl-inp{ resize:vertical; font-family:'Jost',sans-serif; min-height:72px
   .problem-grid{ grid-template-columns:1fr; gap:32px; }
   .problem-head{ position:static; }
   .pillars-grid{ grid-template-columns:1fr 1fr; }
+  .diff-grid{ grid-template-columns:1fr 1fr; }
   .step{ grid-template-columns:1fr; gap:38px; text-align:left; }
   .step.flip .step-copy{ order:1; } .step.flip .step-visual{ order:2; }
   .step-visual{ order:2; }
@@ -829,6 +866,10 @@ textarea.wl-inp{ resize:vertical; font-family:'Jost',sans-serif; min-height:72px
 
 @media (max-width:600px){
   .pillars-grid{ grid-template-columns:1fr; }
+  .diff-grid{ grid-template-columns:1fr; }
+  .loop-row{ flex-direction:column; }
+  .loop-arrow{ transform:rotate(90deg); }
+  .tap-kicker{ padding-left:0; }
   .pk-flow{ grid-template-columns:1fr; }
   .pk-co-grid{ grid-template-columns:1fr; }
   .hero-ring{ display:none; }
@@ -880,6 +921,8 @@ textarea.wl-inp{ resize:vertical; font-family:'Jost',sans-serif; min-height:72px
     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
   <a class="sb-link" id="nl-how" onclick="show('how')">
     <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>How It Works</a>
+  <a class="sb-link" id="nl-difference" onclick="show('difference')">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18M3 12h18"/></svg>The Difference</a>
   <a class="sb-link pk" id="nl-kitchen" onclick="show('kitchen')">
     <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 21v-6h6v6"/></svg>Pro Kitchen</a>
   <a class="sb-link" id="nl-plans" onclick="show('plans')">
@@ -910,8 +953,8 @@ textarea.wl-inp{ resize:vertical; font-family:'Jost',sans-serif; min-height:72px
     <div class="hero-ring"></div>
     <div class="hero-inner">
       <div class="hero-kicker"><span class="dot"></span>Waitlist Open · Launching Soon</div>
-      <h1 class="mega display">Meals planned.<br>Groceries ordered.<br><span class="crim">Dinner handled.</span></h1>
-      <p class="lead">Set up your household once. Celeste, the engine that powers gourmai, puts your household's food logistics on autopilot. She plans every meal for every person and handles the grocery order on the schedule you set. And when you don't want to cook, she routes your week to a nearby partner kitchen that prepares everything fresh, never frozen, for you to pick up.</p>
+      <h1 class="mega display">Every meal planned.<br>Groceries ordered.<br><span class="crim">All of it handled.</span></h1>
+      <p class="lead">Set up your household once. Celeste, the engine that powers gourmai, puts your household's food logistics on autopilot. She plans every meal, breakfast, lunch, and dinner, for every person, and orders the groceries to match: fresh food, pantry staples, even supplements and household essentials, on the schedule you set. And when you don't want to cook, she routes your week to a nearby partner kitchen that prepares everything fresh, never frozen, for you to pick up.</p>
       <p class="lead" style="font-style:italic;color:var(--champ);margin-top:-6px">Bon appétit.</p>
       <p class="micro">Zero coordination. Zero weekly effort.</p>
       <div class="btn-row">
@@ -934,8 +977,8 @@ textarea.wl-inp{ resize:vertical; font-family:'Jost',sans-serif; min-height:72px
     <div class="problem-grid">
       <div class="problem-head">
         <div class="eyebrow crim">The Problem We Solve</div>
-        <h2 class="h2 display">Dinner shouldn't be <span class="crim">the hardest part</span> of your day.</h2>
-        <p class="body" style="margin-top:20px">Between picky eaters, food allergies, dietary restrictions, and a full calendar, getting dinner on the table is a daily battle. gourmai takes the whole fight off your plate.</p>
+        <h2 class="h2 display">Mealtime shouldn't be <span class="crim">the hardest part</span> of your day.</h2>
+        <p class="body" style="margin-top:20px">Between picky eaters, food allergies, dietary restrictions, and a full calendar, getting food on the table is a daily battle, and it's not just dinner. It's breakfast, lunch, snacks, and the groceries behind all of them. gourmai takes the whole thing off your plate.</p>
       </div>
       <div class="prob-list">
         <div class="prob-item rv"><div class="prob-num">01</div><div class="prob-body"><h4>By dinner, you're out of decisions</h4><p>You make hundreds of choices before 6pm: at work, for the kids, for the house. Decision fatigue is real, and dinner lands at the worst possible moment. So you order takeout you didn't budget for, again.</p></div></div>
@@ -943,6 +986,21 @@ textarea.wl-inp{ resize:vertical; font-family:'Jost',sans-serif; min-height:72px
         <div class="prob-item rv"><div class="prob-num">03</div><div class="prob-body"><h4>Planning and groceries were never connected</h4><p>You plan meals on one app, shop on another, forget half the list, and waste a third of what you buy. gourmai closes the loop, end to end.</p></div></div>
         <div class="prob-item rv"><div class="prob-num">04</div><div class="prob-body"><h4>Some weeks, you don't want to cook at all</h4><p>The Pro Kitchen add-on routes your week to a nearby partner kitchen that prepares everything fresh, never frozen, for you to pick up on your schedule. No cooking, no commitment.</p></div></div>
       </div>
+    </div>
+  </section>
+
+  <!-- WHY DIFFERENT -->
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">Why gourmai</div>
+      <h2 class="h2 display">Everything between <span class="champ">deciding and eating,</span> handled.</h2>
+      <p class="body" style="max-width:660px;margin-top:18px">Other tools hand you one piece and leave the rest to you. gourmai handles the whole thing, decide, shop, eat, and does it on your terms.</p>
+      <div class="pillars-grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="pillar rv"><div class="pillar-ico"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h4>Priced to your household</h4><p>No flat subscription that charges a family of two what a family of five spends on a full shop. You set the budget; Celeste plans to it.</p></div>
+        <div class="pillar rv"><div class="pillar-ico"><svg viewBox="0 0 24 24"><path d="M3 3h2l2 13h11l2-8H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></div><h4>This week, your stores</h4><p>Local stores you already shop. No week-or-two wait for a box, no long-distance shipping that risks showing up late or not at all.</p></div>
+        <div class="pillar rv"><div class="pillar-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><h4>Plan and groceries, connected</h4><p>One system from decision to cart, plus the fresh-kitchen option for the weeks you'd rather not cook at all.</p></div>
+      </div>
+      <div class="btn-row" style="margin-top:var(--sp-3)"><a class="btn btn-champ" onclick="show('difference')">The gourmai Difference →</a></div>
     </div>
   </section>
 
@@ -981,6 +1039,45 @@ textarea.wl-inp{ resize:vertical; font-family:'Jost',sans-serif; min-height:72px
         <a class="btn btn-forest" onclick="show('kitchen')">Pro Kitchen</a>
         <a class="btn btn-ghost" onclick="show('plans')">View Plans</a>
       </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════ THE DIFFERENCE ═══════════════════════ -->
+<div id="p-difference" class="page">
+  <section class="phero">
+    <div class="hero-glow"></div>
+    <div class="phero-inner">
+      <div class="eyebrow">The gourmai Difference</div>
+      <h1 class="h1 display">A whole week of meals. <span class="champ">One tap.</span></h1>
+      <p class="lead" style="margin-top:18px;max-width:600px">Breakfast, lunch, dinner, and everything that fills the cart behind them. No planning. No list-making. No deciding what to eat, again. You tap once, and it's all handled, for as many people, servings, and days as you choose.</p>
+    </div>
+  </section>
+
+  <!-- WHAT ONE TAP DOES -->
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">What one tap does</div>
+      <h2 class="h2 display">One tap. Then you're <em>done for the week.</em></h2>
+      <p class="body" style="max-width:600px;margin-top:18px">Everyone else leaves the work to you. With gourmai, a single tap sets the whole week in motion, and the only thing left for you to do is eat.</p>
+      <ol class="tap-chain">
+        <li class="tap-step rv"><span class="tap-ico"><svg viewBox="0 0 24 24"><path d="M9 11.5V5a2 2 0 0 1 4 0v6"/><path d="M13 11V7a2 2 0 0 1 4 0v6"/><path d="M17 11.5V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6h-3a6 6 0 0 1-5.2-3l-2.3-4a2 2 0 0 1 3.4-2L9 14"/></svg></span><div><h4>You tap once.</h4><p>That's the whole job. Everything below happens on its own.</p></div></li>
+        <li class="tap-step rv"><span class="tap-num">1</span><div><h4>Every meal locks in</h4><p>Breakfast, lunch, and dinner for everyone in your household, around your diets, allergies, and budget. You choose how many servings, how many days, and which days, Celeste plans the rest.</p></div></li>
+        <li class="tap-step rv"><span class="tap-num">2</span><div><h4>The shopping list builds itself</h4><p>Every ingredient, the right quantities, totaled to your weekly budget. Nothing for you to write down.</p></div></li>
+        <li class="tap-step rv"><span class="tap-num">3</span><div><h4>The grocery order is placed</h4><p>At the local store you already use, for pickup or delivery on your schedule.</p></div></li>
+        <li class="tap-step rv alt-route"><span class="tap-num">3</span><div><h4>Or it routes to a Pro Kitchen</h4><p>The weeks you'd rather not cook, your plan goes to a nearby kitchen that prepares it fresh for pickup. Same one tap.</p></div></li>
+      </ol>
+      <p class="tap-kicker rv">That's it. You're done for the week.</p>
+    </div>
+  </section>
+
+  <!-- SWAP / CONTROL -->
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">Only if you want to</div>
+      <h2 class="h2 display">Want to change something? <em>Tap that too.</em></h2>
+      <p class="body" style="max-width:620px;margin-top:18px">One tap handles everything, but nothing is locked away from you. Don't love a meal? Swap it, and the shopping list rebuilds itself instantly. Want to approve the cart before it's ordered? You always can. The thinking is optional. The control is always yours.</p>
+      <div class="btn-row" style="margin-top:var(--sp-3)"><a class="btn btn-champ" onclick="show('waitlist')">Join the Waitlist →</a><a class="btn btn-ghost" onclick="show('how')">See How It Works</a></div>
     </div>
   </section>
 </div>
@@ -1150,8 +1247,8 @@ textarea.wl-inp{ resize:vertical; font-family:'Jost',sans-serif; min-height:72px
     <div class="hero-glow" style="background:radial-gradient(ellipse 55% 50% at 80% 30%,rgba(42,74,53,.12) 0%,transparent 60%)"></div>
     <div class="phero-inner">
       <div class="eyebrow gv">Now Inviting Founding Kitchen Partners</div>
-      <h1 class="h1 display">Your kitchen, finally <span class="gv">on the table.</span></h1>
-      <p class="lead" style="margin-top:18px;max-width:640px">Pro Kitchen is gourmai's signature add-on, and the reason families choose us over every other app. A vetted kitchen near your home prepares your Celeste-planned meals fresh, never frozen, for pickup on the schedule you set. We're reimagining who cooks: not just commercial prep kitchens, but small restaurants with capacity during their slow hours.</p>
+      <h1 class="h1 display">Your own private chef. <span class="gv">None of the mess.</span></h1>
+      <p class="lead" style="margin-top:18px;max-width:640px">Pro Kitchen is the closest thing to having your own chef. A vetted kitchen near your home prepares your Celeste-planned meals fresh, never frozen, ready for pickup or delivery, with not a single pan for you to wash. We're reimagining who cooks: not just commercial prep kitchens, but small restaurants with capacity during their slow hours. It's gourmai's signature add-on, and the reason families choose us over every other app.</p>
       <div class="btn-row" style="margin-top:30px"><a class="btn btn-forest" onclick="show('partners')">Become a Kitchen Partner →</a><a class="btn btn-ghost" onclick="show('plans')">See Eligible Plans</a></div>
     </div>
   </section>
@@ -1468,6 +1565,7 @@ textarea.wl-inp{ resize:vertical; font-family:'Jost',sans-serif; min-height:72px
     <div class="faq-set on" id="faqset-cust">
       <div class="faq-item rv"><button class="faq-q" onclick="faqToggle(this)">What exactly is gourmai?</button><div class="faq-a"><p>gourmai is your autonomous kitchen partner. After a quick setup, your automated personal kitchen assistant Celeste plans every meal for everyone in your household, builds your grocery cart at your preferred store, and on the schedule you set places the order for pickup or delivery. When you don't want to cook, she can route your week to a nearby partner kitchen that prepares everything fresh for pickup.</p></div></div>
       <div class="faq-item rv"><button class="faq-q" onclick="faqToggle(this)">Who is Celeste?</button><div class="faq-a"><p>Celeste is your personal kitchen assistant, the intelligence that puts your household's food logistics on autopilot. She learns your family's diets, allergies, budget, store preferences, and tastes, then handles the planning and shopping so you don't have to think about it.</p></div></div>
+      <div class="faq-item rv"><button class="faq-q" onclick="faqToggle(this)">How is gourmai different from other apps and AI tools?</button><div class="faq-a"><p>Most tools solve one slice of the problem, and usually just dinner. A chatbot can suggest a recipe, but you still have to shop. A meal kit ships a box on its own menu and price. A grocery app delivers a list you already made. gourmai is the only one that owns the whole chain, for every meal: it plans breakfast, lunch, and dinner for your real household, orders the groceries behind them (including pantry staples, supplements, and household essentials) at the store you already use within your budget, and when you don't want to cook, routes your week to a nearby kitchen for fresh pickup. You decide how many servings, how many days, and which days. One loop, from the first question to food in your kitchen, and you simply approve along the way. <a onclick="show('difference')" style="cursor:pointer;color:var(--champ)">See the full gourmai difference →</a></p></div></div>
       <div class="faq-item rv"><button class="faq-q" onclick="faqToggle(this)">Does Celeste order groceries automatically?</button><div class="faq-a"><p>You're always in control. On every plan (Essential, Autopilot, and Household+), Celeste plans your week and builds the cart, and you approve it before any order is placed, with the option to review and edit first. On Autopilot and Household+ you can also manage everything by voice and chat, and every order has a 10-minute cancel window.</p></div></div>
       <div class="faq-item rv"><button class="faq-q" onclick="faqToggle(this)">How does gourmai handle allergies and health conditions?</button><div class="faq-a"><p>Safety is built into the core. Each profile can carry allergies and health conditions, and Celeste's logic hard-blocks any meal that conflicts. These aren't soft warnings. For infants, an unseasoned portion is pulled before seasoning, automatically.</p></div></div>
       <div class="faq-item rv"><button class="faq-q" onclick="faqToggle(this)">Which grocery stores can I use?</button><div class="faq-a"><p>You choose your retailer during setup: Walmart, Kroger, Whole Foods, Target, and 12+ stores you already shop, with pickup or delivery available each week.</p></div></div>
@@ -1502,7 +1600,7 @@ textarea.wl-inp{ resize:vertical; font-family:'Jost',sans-serif; min-height:72px
     <div class="phero-inner">
       <div class="eyebrow">The gourmai Journal</div>
       <h1 class="h1 display">Where good food meets <em>good thinking.</em></h1>
-      <p class="lead" style="margin-top:18px;max-width:620px">Featured recipes, the science of the busy household, and our perspective on building technology that gives families their time back. Everything here ladders up to one belief: dinner should make life more human, not less.</p>
+      <p class="lead" style="margin-top:18px;max-width:620px">Featured recipes, the science of the busy household, and our perspective on building technology that gives families their time back. Everything here ladders up to one belief: feeding your household should make life more human, not less.</p>
       <a class="journal-ig" href="https://instagram.com/gourmai.app" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
         <span>Follow <strong>@gourmai.app</strong> for daily inspiration</span>
