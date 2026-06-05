@@ -345,6 +345,11 @@ h1.mega{ font-family:'Cormorant Garamond',serif; font-weight:300; font-size:var(
 .tap-step.alt-route h4{ color:var(--forest-p); }
 .tap-kicker{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:var(--fs-h3); color:var(--champ); margin-top:8px; padding-left:68px; }
 
+/* ── Pro Kitchen value callout ── */
+.value-callout{ margin-top:36px; max-width:640px; border:1px solid var(--forest); border-left:3px solid var(--forest-p); border-radius:14px; background:rgba(42,74,53,.12); padding:28px 32px; }
+.value-callout .vc-line{ font-family:'Cormorant Garamond',serif; font-size:var(--fs-h3); line-height:1.3; color:var(--ivory); }
+.value-callout .vc-sub{ font-size:var(--fs-sm); color:var(--ivory-g); margin-top:10px; letter-spacing:.01em; }
+
 /* ── Pull quote ── */
 .pullquote{ padding:var(--sp-6) var(--pad-x); border-bottom:1px solid var(--seam); text-align:center; }
 .pullquote blockquote{
@@ -953,7 +958,7 @@ textarea.wl-inp{ resize:vertical; font-family:'Jost',sans-serif; min-height:72px
     <div class="hero-ring"></div>
     <div class="hero-inner">
       <div class="hero-kicker"><span class="dot"></span>Waitlist Open · Launching Soon</div>
-      <h1 class="mega display">Every meal planned.<br>Groceries ordered.<br><span class="crim">All of it handled.</span></h1>
+      <h1 class="mega display">Every meal planned.<br>Groceries ordered.<br><span class="crim">A chef on call.</span></h1>
       <p class="lead">Set up your household once. Celeste, the engine that powers gourmai, puts your household's food logistics on autopilot. She plans every meal, breakfast, lunch, and dinner, for every person, and orders the groceries to match: fresh food, pantry staples, even supplements and household essentials, on the schedule you set. And when you don't want to cook, she routes your week to a nearby partner kitchen that prepares everything fresh, never frozen, for you to pick up.</p>
       <p class="lead" style="font-style:italic;color:var(--champ);margin-top:-6px">Bon appétit.</p>
       <p class="micro">Zero coordination. Zero weekly effort.</p>
@@ -1270,6 +1275,21 @@ textarea.wl-inp{ resize:vertical; font-family:'Jost',sans-serif; min-height:72px
 
   <div class="divider"></div>
 
+  <!-- VALUE RESET -->
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow gv">The part that surprises people</div>
+      <h2 class="h2 display">Private-chef luxury. <span class="gv">Takeout-night math.</span></h2>
+      <p class="body" style="margin-top:18px;max-width:640px">Here's what most people get wrong before they try it: they assume a personal chef is a splurge. It isn't. A single takeout night for the whole family, by the time everyone's ordered, the fees are added, and the tip is in, often costs about what a week of fresh, chef-prepared Pro Kitchen meals does. You're not adding a luxury to your budget. You're redirecting what you already spend toward something far better.</p>
+      <div class="value-callout rv">
+        <p class="vc-line">One takeout night for the family. <span class="gv">Or a week of meals, made by a chef.</span></p>
+        <p class="vc-sub">Roughly the same spend. A completely different week.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <section class="section">
     <div class="pk-econ-grid">
       <div>
@@ -1572,6 +1592,7 @@ textarea.wl-inp{ resize:vertical; font-family:'Jost',sans-serif; min-height:72px
       <div class="faq-item rv"><button class="faq-q" onclick="faqToggle(this)">Do I plan weekly or two weeks at a time?</button><div class="faq-a"><p>Weekly is the default, for maximum flexibility. If you'd prefer fewer, larger trips with better bulk pricing, you can switch to 2-week planning anytime. It's an option, never a requirement.</p></div></div>
       <div class="faq-item rv"><button class="faq-q" onclick="faqToggle(this)">What is the Professional Kitchen add-on?</button><div class="faq-a"><p>On the weeks you don't want to cook, Pro Kitchen routes your Celeste-planned meals to a vetted kitchen near your home. They prepare everything fresh, never frozen, and you pick it up on the schedule you set. It's available on Autopilot and Household+, with no commitment: add it only the weeks you want it.</p></div></div>
       <div class="faq-item rv"><button class="faq-q" onclick="faqToggle(this)">Is the Pro Kitchen food frozen or delivered?</button><div class="faq-a"><p>Neither. Meals are prepared fresh by a kitchen close to you, and you pick them up, so they're at their best and you stay in control of the timing.</p></div></div>
+      <div class="faq-item rv"><button class="faq-q" onclick="faqToggle(this)">Isn't a personal chef expensive?</button><div class="faq-a"><p>That's the assumption, and it's the part that surprises people most. A single takeout night for the whole family, once everyone's ordered and the fees and tip are in, often costs about what a full week of fresh, chef-prepared Pro Kitchen meals does. You're not adding a luxury to your budget; you're redirecting what you already spend toward something far better. And because it's on-demand, week by week, you only ever pay for it when you want it.</p></div></div>
       <div class="faq-item rv"><button class="faq-q" onclick="faqToggle(this)">How much does gourmai cost?</button><div class="faq-a"><p>Pricing will be announced at launch. Waitlist members get early access and locked-in launch pricing. There are three plans (Essential, Autopilot, and Household+), plus the optional, on-demand Pro Kitchen add-on. <a onclick="show('plans')">See plan details →</a></p></div></div>
       <div class="faq-item rv"><button class="faq-q" onclick="faqToggle(this)">When does gourmai launch?</button><div class="faq-a"><p>Soon. We&rsquo;re heads-down building it now. <a onclick="show('waitlist')">Join the waitlist</a> to be first in line and hear the moment we go live.</p></div></div>
       <div class="faq-item rv"><button class="faq-q" onclick="faqToggle(this)">How do I get help once I'm a member?</button><div class="faq-a"><p>You'll have in-app support, and you can always reach our team at <a href="mailto:techsupport@gourmaiapp.com">techsupport@gourmaiapp.com</a>.</p></div></div>
