@@ -5,6 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>gourmai — Intelligent Meal Planning</title>
 <meta name="description" content="gourmai plans every meal, orders every grocery, and on the weeks you don't want to cook, routes everything to a professional kitchen. Meet Celeste, your autonomous kitchen partner."/>
+<link rel="canonical" href="https://gourmaiapp.com/"/>
+<meta name="robots" content="index, follow"/>
+<meta name="keywords" content="AI meal planning, autonomous meal planner, grocery ordering app, meal planning for families, personal chef alternative, meal kit alternative, household meal planning, Celeste gourmai"/>
+<!-- Open Graph (social sharing) -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="gourmai"/>
+<meta property="og:title" content="gourmai — Every Meal Planned. Groceries Ordered. A Chef On Call."/>
+<meta property="og:description" content="gourmai plans every meal for your household, orders the groceries, and when you don't want to cook, a nearby kitchen prepares it fresh. Meet Celeste, your autonomous kitchen partner."/>
+<meta property="og:url" content="https://gourmaiapp.com/"/>
+<meta property="og:image" content="https://gourmaiapp.com/og-image.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="gourmai — Every Meal Planned. Groceries Ordered. A Chef On Call."/>
+<meta name="twitter:description" content="Your autonomous kitchen partner. Every meal planned, every grocery ordered, and a chef on call for the weeks you'd rather not cook."/>
+<meta name="twitter:image" content="https://gourmaiapp.com/og-image.png"/>
+<!-- Structured data: Organization + WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://gourmaiapp.com/#org",
+      "name": "gourmai",
+      "url": "https://gourmaiapp.com/",
+      "description": "gourmai is an autonomous kitchen partner that plans every meal for your household, orders the groceries, and routes your week to a professional kitchen when you don't want to cook.",
+      "logo": "https://gourmaiapp.com/og-image.png",
+      "sameAs": ["https://www.instagram.com/gourmai.app"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://gourmaiapp.com/#website",
+      "url": "https://gourmaiapp.com/",
+      "name": "gourmai",
+      "publisher": {"@id": "https://gourmaiapp.com/#org"}
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "gourmai",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "iOS, Android, Web",
+      "description": "AI meal planning and autonomous grocery ordering for households, with an optional Pro Kitchen add-on that routes your week to a nearby kitchen for fresh, chef-prepared meals.",
+      "offers": {"@type": "Offer", "category": "Subscription"}
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
@@ -2632,7 +2678,7 @@ function revealScan(scope){
   });
 }
 
-function show(id){
+function show(id, fromRoute){
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.sb-link').forEach(l => l.classList.remove('active'));
   var pg = document.getElementById('p-' + id);
@@ -2651,7 +2697,45 @@ function show(id){
     pg.querySelectorAll('.rv.in').forEach(function(el){ el.classList.remove('in'); });
     requestAnimationFrame(function(){ requestAnimationFrame(function(){ revealScan(pg); }); });
   }
+  // ── SEO/shareable URLs: reflect the page in the address bar + title ──
+  if(!fromRoute){
+    var slug = (id === 'home') ? '' : '#/' + id;
+    if(('#/' + id) !== location.hash && !(id==='home' && location.hash==='')){
+      history.pushState({page:id}, '', slug || location.pathname);
+    }
+  }
+  setMeta(id);
 }
+// Per-page <title> + meta description for search snippets
+var PAGE_META = {
+  'home':       ['gourmai — Every Meal Planned. Groceries Ordered. A Chef On Call.','gourmai plans every meal for your household, orders the groceries, and when you do not want to cook, a nearby kitchen prepares it fresh. Meet Celeste, your autonomous kitchen partner.'],
+  'how':        ['How gourmai Works — Autonomous Meal Planning & Grocery Ordering','Set up your household once. Celeste plans every meal, builds your grocery cart at your store, and places the order for pickup or delivery. See how gourmai works.'],
+  'difference': ['The gourmai Difference — A Whole Week of Meals in One Tap','Breakfast, lunch, and dinner plus the groceries behind them, handled in one tap. See what makes gourmai different from meal kits, grocery apps, and chatbots.'],
+  'kitchen':    ['Pro Kitchen — Your Own Private Chef, None of the Mess | gourmai','A vetted kitchen near you prepares your gourmai-planned meals fresh, never frozen, for pickup or delivery. Private-chef quality for about the cost of a takeout night.'],
+  'plans':      ['Plans & Pricing — gourmai Meal Planning Subscriptions','Three gourmai plans plus the on-demand Pro Kitchen add-on. Join the waitlist for early access and locked-in launch pricing.'],
+  'about':      ['About gourmai — Your Autonomous Kitchen Partner','Why we built gourmai: to take the entire mental load of feeding a household off your plate, from planning to groceries to cooking.'],
+  'responsible':['Responsible AI — How gourmai Handles Your Data & Safety','How gourmai uses AI responsibly: allergen safety, transparent data practices, and you in control of every plan and order.'],
+  'blog':       ['The gourmai Journal — Meal Planning, Family Food & the Mental Load','Ideas on meal planning, family food logistics, and reclaiming your time, from the team building gourmai.'],
+  'press':      ['Press — gourmai','Press and media resources for gourmai, the autonomous kitchen partner.'],
+  'faq':        ['FAQ — gourmai','Answers about how gourmai works, Pro Kitchen, pricing, data, and getting started.'],
+  'waitlist':   ['Join the Waitlist — gourmai','Be first to gourmai. Waitlist members get early access and locked-in launch pricing.'],
+  'partners':   ['Become a Kitchen Partner — gourmai Pro Kitchen','Fill your slow hours with pre-planned, pre-paid meal orders. No menu R&D, no front-of-house. Become a founding gourmai kitchen partner.']
+};
+function setMeta(id){
+  var m = PAGE_META[id];
+  if(!m) return;
+  document.title = m[0];
+  var d = document.querySelector('meta[name="description"]');
+  if(d) d.setAttribute('content', m[1]);
+}
+// Slug router: read the hash on load + back/forward
+function routeFromHash(){
+  var h = location.hash.replace(/^#\//,'').trim();
+  var valid = h && document.getElementById('p-' + h);
+  show(valid ? h : 'home', true);
+}
+window.addEventListener('popstate', routeFromHash);
+window.addEventListener('DOMContentLoaded', routeFromHash);
 function toggleMobileNav(){
   document.getElementById('sb').classList.toggle('open');
   document.getElementById('ham').classList.toggle('open');
